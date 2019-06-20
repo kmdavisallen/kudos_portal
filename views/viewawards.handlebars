@@ -1,0 +1,36 @@
+<div class = "topnav">
+	<ul class = "navmenu">
+		<li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome">Home</a></div></li>
+		<li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome/newAward">Create Award</a></div></li>
+        <li class = "navitem" style="width:210px"><div class="active"><a href="/userHome/myAwards">My Awards</a></div></li>
+        <li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome/manageawards">Manage Awards</a></div></li>
+		<li class = "navitem" style="width:210px"><div class ="inactive"><a href="/userHome/editProfile">Edit Profile</a></div></li>
+        <li class = "navitem" style="width:210px"><div class="inactive"><a href="/logout">Log out</a></div></li>
+		<li class = "navitem" id="logo"><img src="/static/images/KudosLogo.png" width="" height="50px"></li>
+	</ul>
+</div>
+<div class="arrow-down" style="margin-left:505px;"></div>
+<div class="menu">
+    <div class="menutitle">Your Awards</div>
+    <hr>
+    <table>
+        <col width="400">
+        <col width="400">
+        <col width="400">
+        <col width="200">
+        <tr id="headerRow">
+            <th>Award</th>
+            <th>Given By</th>
+            <th>Date Given</th>
+            <th></th>
+        </tr>
+        {{#each awards}}
+        <tr class="dataRow">
+            <td class="datacell">{{award_name}}</td>
+            <td class="datacell">{{first_name}} {{last_name}}</td>
+            <td class="datacell">{{award_date}}</td>
+            
+        </tr>
+        {{/each}} 
+    </table>
+</div>

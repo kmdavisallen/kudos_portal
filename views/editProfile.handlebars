@@ -1,0 +1,52 @@
+	<div class = "topnav">
+		<ul class = "navmenu">
+			<li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome">Home</a></div></li>
+			<li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome/newAward">Create Award</a></div></li>
+            <li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome/myAwards">My Awards</a></div></li>
+            <li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome/manageawards">Manage Awards</a></div></li>
+			<li class = "navitem" style="width:210px"><div class = "active"><a href="/userHome/editProfile">Edit Profile</a></div></li>
+            <li class = "navitem" style="width:210px"><div class="inactive"><a href="/logout">Log out</a></div></li>
+			<li class = "navitem" id="logo"><img src="/static/images/KudosLogo.png" width="" height="50px"></li>
+		</ul>
+	</div>
+	<div class="arrow-down" style="margin-left:930px;"></div>
+<div class="menu">
+    <form id="edit-profile" enctype="multipart/form-data">
+        <label for="fName" class="menutitle">First Name</label>
+        <input type="text" class="input" name="first_name" placeholder="First Name" value="{{user.first_name}}"><br>
+        <label for="lName" class="menutitle">Last Name</label>
+        <input type="text" class="input" name="last_name" placeholder="Last Name" value="{{user.last_name}}"><br>
+        <label for="userEmail" class="menutitle">Email Address</label>
+        <input type="email" class="input" name="email" placeholder="email" value="{{user.email}}">
+	
+        <hr>
+        <label for="cPassword"class="menutitle">Change Password</label>
+        <input id="password" type="password" class="input" name="password" placeholder="Password" value="{{user.password}}"><br>
+        <label for="conPassword" class="menutitle">Confirm Password</label>
+        <input id="conPassword" type="password" class="input" id="conPassword" placeholder="Confirm Password" value="{{user.password}}"><br>
+        <hr>
+        <div>
+            <label for="sigImg" class="menutitle">Current Signature</label>
+            <img src='/static/images/{{user.signature}}' style='height:150px'>
+        </div>
+        <div>
+            <label for="sigSub" class="menutitle">Upload new Signature</label>
+            <input type="file" name='sigImg' class="input-file" id="sigSub">
+        </div>
+        <br>
+        <button class="submitchanges" onclick="check()">Submit Changes</button>
+                <script language='javascript' type='text/javascript'>
+                    function check() {
+                        if (document.getElementById('password').value != document.getElementById('conPassword').value) {
+                            document.getElementById('password').setCustomValidity('Password Must be Matching.');
+                        } else {
+                            // input is valid -- reset the error message
+                            document.getElementById('password').setCustomValidity('');
+                            editUser({{user.user_id}});
+                        }
+                    }
+                </script> 
+        <a href="/userHome"><button class="cancel" type="button">Cancel</button></a>   
+    </form>
+    
+</div>

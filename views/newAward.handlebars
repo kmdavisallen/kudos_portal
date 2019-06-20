@@ -1,0 +1,36 @@
+	<div class = "topnav">
+		<ul class = "navmenu">
+			<li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome">Home</a></div></li>
+			<li class = "navitem" style="width:210px"><div class="active"><a href="/userHome/newAward">Create Award</a></div></li>
+            <li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome/myAwards">My Awards</a></div></li>
+            <li class = "navitem" style="width:210px"><div class="inactive"><a href="/userHome/manageawards">Manage Awards</a></div></li>
+			<li class = "navitem" style="width:210px"><div class ="inactive"><a href="/userHome/editProfile">Edit Profile</a></div></li>
+            <li class = "navitem" style="width:210px"><div class="inactive"><a href="/logout">Log out</a></div></li>
+			<li class = "navitem" id="logo"><img src="/static/images/KudosLogo.png" width="" height="50px"></li>
+		</ul>
+	</div>
+	<div class="arrow-down" style="margin-left:310px;"></div>
+<div class="menu">
+    <h2 class="menutitle" style="font-size:35px; text-align:center">Give an award</h2>
+    <form action="/userHome/newAward" method='post'>
+        <label class="menutitle" for="name">Please Select the Reciepient : </label>
+                <select class="menutitle" style="font-size:20px" name="name">
+                    {{#each users}}
+                    <option value='{{user_id}}'>{{first_name}} {{last_name}}</option>
+                    {{/each}}
+                </select>
+        <br>
+        <label for='aType' class='menutitle'>Award Type</label>
+            <select class='menutitle' style='font-size:20px' name='aType'>
+                    {{#each awardNames}}
+                    <option value='{{award_id}}'>{{award_name}}</option>
+                    {{/each}}
+                </select>
+        <br>
+        <label for="date" class="menutitle">Date of Award</label>
+        <input type='date' name='date' required>
+        <br><br>
+        <input type='submit' value="Issue Award" style="cursor:pointer">
+        <a href="/userHome"><button class="cancel" type="button">Cancel</button></a> 
+    </form>
+</div>
